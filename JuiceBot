@@ -1,0 +1,23 @@
+import discord
+import os
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(client))
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$Hi'):
+        await message.channel.send('Hello!')
+
+    if message.content.startswith('$Bye'):
+        await message.channel.send('Goodbye!')
+
+    if message.content.startswith('$WhoCreatedYou'):
+      await message.channel.send('I was created by @JuiceBoxes!')
+client.run('ODk1NDIyNjg4MjYzMjk5MDk0.YV4VXQ.RLwcGSI0rKyOPMPVO0ratNm8HXw')
